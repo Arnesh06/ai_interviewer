@@ -1,4 +1,22 @@
-streamlit>=1.28.0
-huggingface-hub>=0.17.0
-python-dotenv>=1.0.0
-pip install pdfplumber
+# Streamlit
+streamlit==1.28.0
+
+# Hugging Face Inference
+huggingface-hub==1.17.0
+transformers==4.35.0
+torch==2.2.0
+
+# PDF / Resume processing
+pdfplumber==0.9.0
+PyPDF2==3.0.1
+
+# Data handling
+pandas==2.1.1
+numpy==1.26.2
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.32.5
+
+# Optional visualization
+altair==6.0.0
