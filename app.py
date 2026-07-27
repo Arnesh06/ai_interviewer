@@ -21,12 +21,14 @@ def get_client():
     """Initialize and cache the HF client"""
     try:
         return InferenceClient(
-            "meta-llama/Llama-3.2-1B-Instruct",
-            token=st.secrets.get("HF_API_KEY", "")
+            provider="featherless-ai",
+            api_key=st.secrets["HF_TOKEN"]
         )
     except Exception as e:
         st.error(f"Failed to initialize client: {str(e)}")
         return None
+
+MODEL_NAME = "Fedir-Ilina/meta-llamaLlama-3.2-1B"
 
 client = get_client()
 
@@ -98,12 +100,12 @@ Questions:"""
 
     try:
         response = client.chat.completions.create(
-            model="meta-llama/Llama-3.2-1B-Instruct",
+            model=MODEL_NAME,
             messages=[{"role": "user", "content": prompt}],
             max_tokens=800,
             temperature=0.7
         )
-        return response.choices[0].message["content"]
+        return response.choices[0].message.content
     except Exception as e:
         st.error(f"API Error: {str(e)}")
         return None
@@ -136,12 +138,12 @@ Questions:"""
 
     try:
         response = client.chat.completions.create(
-            model="meta-llama/Llama-3.2-1B-Instruct",
+            model=MODEL_NAME,
             messages=[{"role": "user", "content": prompt}],
             max_tokens=800,
             temperature=0.7
         )
-        return response.choices[0].message["content"]
+        return response.choices[0].message.content
     except Exception as e:
         st.error(f"API Error: {str(e)}")
         return None
