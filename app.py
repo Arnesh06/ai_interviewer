@@ -99,13 +99,13 @@ Make questions specific to {role} responsibilities and realistic for actual inte
 Questions:"""
 
     try:
-        response = client.chat.completions.create(
+        response = client.text_generation(
+            prompt,
             model=MODEL_NAME,
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=800,
-            temperature=0.7
+            max_new_tokens=800,
+            temperature=0.7,
         )
-        return response.choices[0].message.content
+        return response
     except Exception as e:
         st.error(f"API Error: {str(e)}")
         return None
@@ -137,13 +137,13 @@ Make questions specific to what's actually in the resume. Avoid generic question
 Questions:"""
 
     try:
-        response = client.chat.completions.create(
+        response = client.text_generation(
+            prompt,
             model=MODEL_NAME,
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=800,
-            temperature=0.7
+            max_new_tokens=800,
+            temperature=0.7,
         )
-        return response.choices[0].message.content
+        return response
     except Exception as e:
         st.error(f"API Error: {str(e)}")
         return None
